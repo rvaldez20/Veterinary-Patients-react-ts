@@ -41,7 +41,7 @@ export function PatientForm() {
           />
 
           {errors.name && (
-            <Error>{errors.name?.message?.toString()}</Error>
+            <Error>{errors.name?.message}</Error>
           )}
 
         </div>
@@ -61,7 +61,7 @@ export function PatientForm() {
           />
 
           {errors.caretaker && (
-              <Error>{errors.caretaker?.message?.toString()}</Error>
+              <Error>{errors.caretaker?.message}</Error>
           )}
 
         </div>
@@ -85,7 +85,7 @@ export function PatientForm() {
           />
 
           {errors.email && (
-              <Error>{errors.email?.message?.toString()}</Error>
+              <Error>{errors.email?.message}</Error>
           )}
 
         </div>
@@ -104,7 +104,7 @@ export function PatientForm() {
             />
 
             {errors.date && (
-              <Error>{errors.date?.message?.toString()}</Error>
+              <Error>{errors.date?.message}</Error>
             )}
         </div>
 
@@ -122,7 +122,7 @@ export function PatientForm() {
             ></textarea>
 
             {errors.symptoms && (
-              <Error>{errors.symptoms?.message?.toString()}</Error>
+              <Error>{errors.symptoms?.message}</Error>
             )}
         </div>
 
