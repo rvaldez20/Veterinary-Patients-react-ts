@@ -25,41 +25,43 @@ export function PatientForm() {
         onSubmit={handleSubmit(registerPatient)}
       >
         <div className="mb-5">
-            <label htmlFor="name" className="text-sm uppercase font-bold">
-                Paciente
-            </label>
-            <input
-                id="name"
-                className="w-full p-3  border border-gray-100"
-                type="text"
-                placeholder="Patient name"
-                {...register('name', {
-                  required: 'Patient name is required',
-                  maxLength: {
-                    value: 8,
-                    message: 'Maximum 8 Characters'
-                  }
-                })}
-            />
+          <label htmlFor="name" className="text-sm uppercase font-bold">
+              Patient
+          </label>
+          <input
+              id="name"
+              className="w-full p-3  border border-gray-100"
+              type="text"
+              placeholder="Patient name"
+              {...register('name', {
+                required: 'Patient name is required',
+              })}
+          />
 
-            {errors.name && (
-              <Error>{errors.name?.message?.toString()}</Error>
-            )}
-            {errors.maxLength && (
-              <Error>{errors.name?.message?.toString()}</Error>
-            )}
+          {errors.name && (
+            <Error>{errors.name?.message?.toString()}</Error>
+          )}
+
         </div>
 
         <div className="mb-5">
           <label htmlFor="caretaker" className="text-sm uppercase font-bold">
-              Propietario
+            Caretaker
           </label>
           <input
               id="caretaker"
               className="w-full p-3  border border-gray-100"
               type="text"
-              placeholder="Nombre del Propietario"
+              placeholder="Caretaker name"
+              {...register('caretaker', {
+                required: 'Caretaker name is required',
+              })}
           />
+
+          {errors.caretaker && (
+              <Error>{errors.caretaker?.message?.toString()}</Error>
+          )}
+
         </div>
 
         <div className="mb-5">
@@ -67,39 +69,65 @@ export function PatientForm() {
               Email
           </label>
           <input
-              id="email"
-              className="w-full p-3  border border-gray-100"
-              type="email"
-              placeholder="Email de Registro"
+            id="email"
+            className="w-full p-3  border border-gray-100"
+            type="email"
+            placeholder="Email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Invalid email'
+              }
+            })}
           />
+
+          {errors.email && (
+              <Error>{errors.email?.message?.toString()}</Error>
+          )}
+
         </div>
 
         <div className="mb-5">
             <label htmlFor="date" className="text-sm uppercase font-bold">
-                Fecha Alta
+              Registration Date
             </label>
             <input
                 id="date"
                 className="w-full p-3  border border-gray-100"
                 type="date"
+                {...register('date', {
+                  required: 'The registration date is required',
+                })}
             />
+
+            {errors.date && (
+              <Error>{errors.date?.message?.toString()}</Error>
+            )}
         </div>
 
         <div className="mb-5">
             <label htmlFor="symptoms" className="text-sm uppercase font-bold">
-            Síntomas
+            Symptoms
             </label>
             <textarea
                 id="symptoms"
                 className="w-full p-3  border border-gray-100"
-                placeholder="Síntomas del paciente"
+                placeholder="Patient symptoms"
+                {...register('symptoms', {
+                  required: 'The symptoms are required',
+                })}
             ></textarea>
+
+            {errors.symptoms && (
+              <Error>{errors.symptoms?.message?.toString()}</Error>
+            )}
         </div>
 
         <input
             type="submit"
             className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
-            value='Guardar Paciente'
+            value='Save new Paciente'
         />
       </form>
     </div>
