@@ -10,10 +10,12 @@ export function PatientForm() {
   const addPatient = usePatientStore((state) => state.addPatient)
 
   //* add hook useForm from react hook form
-  const { register, handleSubmit, formState: {errors} } = useForm<DraftPatient>()
+  const { register, handleSubmit, formState: {errors}, reset } = useForm<DraftPatient>()
 
   const registerPatient = (data: DraftPatient) => {
     addPatient(data)
+
+    reset()
   }
 
   return (
